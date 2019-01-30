@@ -12,7 +12,7 @@ const MediaQueryPlugin = require('media-query-plugin');
 
 // file types & file links
 const resource = {
-    js: { bootstrap: '//cdn/bootstrap/bootstrap.min.js' },
+    // js: { somejs: '//cdn/bootstrap/bootstrap.min.js' },
     css: { bootstrap: '/style.css' },
     img: { 'the-girl': '//cdn/img/the-girl.jpg' }
 }
@@ -30,7 +30,7 @@ const config = {
     entry:{ app: ['./src/js/index.js', './src/styles/main.scss'],
     },
     // Output
-    // mode: "development",
+    mode: "production",
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
@@ -76,6 +76,7 @@ const config = {
         new htmlWebpackPlugin({
             'meta': {
                 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+                'description': appConfig.description,
                 // Will generate: <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 'theme-color': '#4285f4'
                 // Will generate: <meta name="theme-color" content="#4285f4">
@@ -96,6 +97,10 @@ const config = {
             {
                 pattern: '@@title',
                 replacement: 'html replace webpack plugin'
+            },
+            {
+                pattern: '@@lang',
+                replacement: appConfig.language
             },
             {
                 pattern: /(<!--\s*|@@)(css|js|img):([\w-\/]+)(\s*-->)?/g,

@@ -1,5 +1,6 @@
 module.exports = {
     language: 'en',
+    description:"App description",
     word: "defenestration",
     pattern: /([A-Z])\w+/,
     appName: "appName"

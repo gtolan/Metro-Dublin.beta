@@ -1,7 +1,7 @@
 
 
 export const ServiceWorker = {
-    init: function(){
+    init (){
         console.log('init sw')
         if ('serviceWorker' in navigator) {
 
@@ -14,6 +14,6 @@ export const ServiceWorker = {
             });
         };
 
-    },
+    }
 
 }

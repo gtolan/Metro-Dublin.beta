@@ -6,44 +6,45 @@ let tabs = document.querySelectorAll('.tab'),
     articleMainImg = document.querySelectorAll('article .main');
 
 export const InterObserver = {
-    init: function () {
+    init () {
         InterObserver.createObserver();
     },
-    createObserver: function () {
-        var observer;
+    createObserver (){
+        let observer;
 
-        var options = {
+        let options = {
             root: null,
             rootMargin: "0px",
             threshold: this.buildThresholdList()
         };
 
         observer = new IntersectionObserver(InterObserver.handleIntersect, options);
-        for (var i = 0; i < bottomBorders.length; i++) {
-            var border = bottomBorders[i];
-            observer.observe(border);
-        }
-        for (var i = 0; i < articleMainImg.length; i++) {
-            var mainImg = articleMainImg[i];
-            observer.observe(mainImg);
-        }
-        observer.observe(workSection);
-        observer.observe(navWatch)
+
+        // for (var i = 0; i < bottomBorders.length; i++) {
+        //     var border = bottomBorders[i];
+        //     observer.observe(border);
+        // }
+        // for (var i = 0; i < articleMainImg.length; i++) {
+        //     var mainImg = articleMainImg[i];
+        //     observer.observe(mainImg);
+        // }
+        // observer.observe(workSection);
+        // observer.observe(navWatch)
 
     },
-    buildThresholdList: function () {
-        var thresholds = [];
-        var numSteps = 20;
+    buildThresholdList() {
+        let thresholds = [];
+        let numSteps = 20;
 
-        for (var i = 1.0; i <= numSteps; i++) {
-            var ratio = i / numSteps;
+        for (let i = 1.0; i <= numSteps; i++) {
+            let ratio = i / numSteps;
             thresholds.push(ratio);
         }
 
         thresholds.push(0);
         return thresholds;
     },
-    handleIntersect: function (entries, observer) {
+    handleIntersect (entries, observer){
         entries.forEach(function (entry) {
             // console.log(entry.intersectionRatio, "ratio")
             //console.log(entry.isIntersecting, "inter", entry.target)
@@ -96,7 +97,7 @@ export const InterObserver = {
 
             // prevRatio = entry.intersectionRatio;
         });
-    }
 
+    }
 }
 
