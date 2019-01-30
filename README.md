@@ -1,7 +1,8 @@
 # Webpack-Gulp-dev-env-start
-# Es6 PWA base project for all 100 scores on lighthouse
-## Built With
-#Webpack
+Es6 PWA base project for all 100 scores on lighthouse
+Built With
+
+Webpack
 *  - generate index.html
 *  - add meta tags and viewport
 *  - add app description/theme/ from appConfig
@@ -11,9 +12,9 @@
 *  - replace / add styles and scripts to index
 *  - Add defered styles by Media Query
 
-#...with the help of
+...with the help of
 
-#Gulp
+Gulp
 * - Compress and copy images
 * - scss to css below fold styles
 * - inline critical above the fold styles
