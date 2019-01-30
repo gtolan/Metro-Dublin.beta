@@ -14,12 +14,16 @@ const MediaQueryPlugin = require('media-query-plugin');
 const resource = {
     // js: { somejs: '//cdn/bootstrap/bootstrap.min.js' },
     css: { bootstrap: '/style.css' },
+    mob: { mobile: '/mobile.css' },
+    desk: { desktop: '/desktop.css' },
     img: { 'the-girl': '//cdn/img/the-girl.jpg' }
 }
 
 const tpl = {
     img: '<img src="%s">',
     css: '<link rel="stylesheet" type="text/css" href="%s" inline>',
+    mob: '<link rel="stylesheet" type="text/css" href="%s" media="screen and (max-width: 900px)">',
+    desk: '<link rel="stylesheet" type="text/css" href="%s" media="screen and (min-width: 900px)">',
     js: '<script type="text/javascript" src="%s"></script>'
 }
 
@@ -103,7 +107,7 @@ const config = {
                 replacement: appConfig.language
             },
             {
-                pattern: /(<!--\s*|@@)(css|js|img):([\w-\/]+)(\s*-->)?/g,
+                pattern: /(<!--\s*|@@)(css|js|img|mob|desk):([\w-\/]+)(\s*-->)?/g,
                 replacement: function(match, $1, type, file, $4, index, input) {
                     // those formal parameters could be:
                     // match: <-- css:bootstrap-->
