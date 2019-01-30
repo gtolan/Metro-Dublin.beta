@@ -1,0 +1,10 @@
+$color: red;
+
+@mixin autoprefixer-test {
+  user-select: none;
+}
+
+.autoprefixer-test {
+  @include autoprefixer-test;
+  color: $color;
+}

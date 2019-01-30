@@ -1,20 +1,25 @@
 const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
-const appConfig =  require('./app.config.js')
+const appConfig =  require('./app.config.js');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MediaQueryPlugin = require('media-query-plugin');
 
-require("babel-register");
+// const lazyloadCSS = new ExtractTextPlugin('./src/styles/above-fold-inline.css');
+
 
 // file types & file links
 const resource = {
     js: { bootstrap: '//cdn/bootstrap/bootstrap.min.js' },
-    css: { bootstrap: '//cdn/bootstrap/bootstrap.min.css' },
+    css: { bootstrap: '/style.css' },
     img: { 'the-girl': '//cdn/img/the-girl.jpg' }
 }
 
 const tpl = {
     img: '<img src="%s">',
-    css: '<link rel="stylesheet" type="text/css" href="%s">',
+    css: '<link rel="stylesheet" type="text/css" href="%s" inline>',
     js: '<script type="text/javascript" src="%s"></script>'
 }
 
@@ -22,31 +27,52 @@ const tpl = {
 const config = {
 
     // Entry
-    entry: './src/js/removed-types/app.js',
+    entry:{ app: ['./src/js/index.js', './src/styles/main.scss'],
+    },
     // Output
     // mode: "development",
     output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: 'app.bundle.js',
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
     // Loaders
-    module: {
+    module : {
         rules : [
-            // JavaScript/JSX Files
             {
-                test: /\.jsx$/,
+                test: /\.s?[ac]ss$/,
                 exclude: /node_modules/,
-                use: ['babel-loader'],
-            },
-            // CSS Files
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
+
+                ]
+            }
+            ,
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: "babel-loader"
             }
         ]
     },
     // Plugins
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: "style.css"
+            // filename: "[name].css",
+            // chunkFilename: "[id].css"
+        }),
+
+        new webpack.LoaderOptionsPlugin({
+            options:{
+                postcss:[
+                    autoprefixer()
+                ]
+            }
+        }),
+
         new htmlWebpackPlugin({
             'meta': {
                 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
@@ -60,7 +86,8 @@ const config = {
             filename: 'index.html',
             hash: false
         }),
-        
+
+
         new HtmlReplaceWebpackPlugin([
             {
                 pattern: 'foo',
