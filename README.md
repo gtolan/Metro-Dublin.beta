@@ -21,5 +21,5 @@ Gulp
 
 
 <img src="https://tehnoblog.org/wp-content/uploads/2019/01/Google-Chrome-Lighthouse-Logo.png" width="300" height="180"/>
-<img src="https://github.com/gtolan/Webpack-Gulp-dev-env-start/src/images/Screenshot 2018-12-19 at 22.28.26.png" width="300" height="180"/>
+<img src="https://raw.githubusercontent.com/gtolan/Webpack-Gulp-dev-env-start/master/src/images/Screenshot%202019-01-30%20at%2014.13.11.png" width="100%" height="180"/>
 
