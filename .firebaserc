@@ -1,6 +1,7 @@
 {
   "projects": {
-    "pwatemp": "pwa-template-22679",
-    "mett": "metrodublin-21829"
+    "mett": "metrodublin-21829",
+    "met2": "metrodublin-21829",
+    "default": "metrodublin-21829"
   }
 }

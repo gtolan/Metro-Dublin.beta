@@ -5,7 +5,8 @@
   "functions": {
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint"
-    ]
+    ],
+    "source": "functions"
   },
   "hosting": {
     "public": "dist",
@@ -13,66 +14,6 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "/",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/home",
-        "destination": "/index.html"
-      },
-
-      {
-        "source": "/homesubscription-confirmation",
-        "destination": "/subscription-confirmation.html"
-      },
-      {
-        "source": "/subscription-confirmation",
-        "destination": "/subscription-confirmation.html"
-      },
-      {
-        "source": "/privacy",
-        "destination": "/pages/privacy-policy.html"
-      },
-      {
-        "source": "/privacy-policy",
-        "destination": "/pages/privacy-policy.html"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
-    "headers": [ {
-      "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-      "headers" : [ {
-        "key" : "Access-Control-Allow-Origin",
-        "value" : "max-age=2628000"
-      } ]
-    }, {
-      "source" : "**/*.@(js|css|ttf)",
-      "headers" : [ {
-        "key" : "Cache-Control",
-        "value" : "max-age=0"
-      } ]
-    },
-      {
-        "source" : "**/*.@(mp4|webm)",
-        "headers" : [ {
-          "key" : "Cache-Control",
-          "value" : "max-age=2628000"
-        } ]
-      },
-
-      {
-        "source" : "**/*.@(jpg|jpeg|gif|png)",
-        "headers" : [ {
-          "key" : "Cache-Control",
-          "value" : "max-age=2628000"
-        } ]
-      }]
+    ]
   }
-
 }

@@ -16,11 +16,11 @@ var menu = document.getElementById('menu'),
 
 var firstImg = network.querySelector('.one'),
     secImg = network.querySelector('.two'),
-    integratedMapButton = network.querySelector('.actions').firstElementChild.nextElementSibling;
-networkMapButton = network.querySelector('.actions').firstElementChild;
+    integratedMapButton = network.querySelector('.actions').firstElementChild.nextElementSibling,
+    networkMapButton = network.querySelector('.actions').firstElementChild;
 
 
-var MetroApp = {
+export const MetroApp = {
 
     methods:{
         toggleMap:function(){
@@ -126,6 +126,7 @@ var MetroApp = {
 
     },
     init:function(){
+        console.log('init metro')
         MetroApp.addEvents();
     },
 }
@@ -144,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error(e);
         //document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
     }
-    MetroApp.init();
-    ServiceWorker.init();
+    // MetroApp.init();
+    // ServiceWorker.init();
     // FirebaseSubscribe.initApp();
 });

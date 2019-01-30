@@ -15,7 +15,7 @@ const resource = {
     // js: { somejs: '//cdn/bootstrap/bootstrap.min.js' },
     man: { manifest: '/manifest.json'},
     pre: { font: 'https://fonts.googleapis.com/css?family=Raleway'},
-    css: { critical: '/style.css' },
+    css: { critical: '/styles/above-fold-inline.css' },
     css: { hamburger: '/styles/hamburger.css' },
     mob: { mobile: '/styles/mobile.css' },
     desk: { desktop: '/styles/desktop.css' },
@@ -36,7 +36,7 @@ const tpl = {
 const config = {
 
     // Entry
-    entry:{ app: ['./src/js/index.js', './src/styles/above-fold-inline.scss'],
+    entry:{ app: ['./src/js/index.js'],
     },
     // Output
     mode: "production",
@@ -105,10 +105,10 @@ const config = {
 
 
         new HtmlReplaceWebpackPlugin([
-            {
-                pattern: 'foo',
-                replacement: '`foo` has been replaced with `bar`'
-            },
+            // {
+            //     pattern: 'foo',
+            //     replacement: '`foo` has been replaced with `bar`'
+            // },
             // {
             //     pattern: '@@title',
             //     replacement: 'html replace webpack plugin'
