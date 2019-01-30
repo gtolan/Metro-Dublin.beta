@@ -19,5 +19,6 @@ Gulp
 * - scss to css below fold styles
 * - inline critical above the fold styles
 
-![alt text](https://tehnoblog.org/wp-content/uploads/2019/01/Google-Chrome-Lighthouse-Logo.png)
+
+<img src="https://tehnoblog.org/wp-content/uploads/2019/01/Google-Chrome-Lighthouse-Logo.png" width="300" height="300"/>
 ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
