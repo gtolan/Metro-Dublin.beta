@@ -37,7 +37,7 @@ gulp.task('sass', function () {
         .pipe(cleanCSS());
 
     return stream
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist/styles'));
 });
 
 gulp.task('images', () =>

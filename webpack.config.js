@@ -7,20 +7,25 @@ const appConfig =  require('./app.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const MediaQueryPlugin = require('media-query-plugin');
 
-// const lazyloadCSS = new ExtractTextPlugin('./src/styles/above-fold-inline.css');
+// const lazyloadCSS = new ExtractTextPlugin('./src/styles/above-fold-inline.scss');
 
 
 // file types & file links
 const resource = {
     // js: { somejs: '//cdn/bootstrap/bootstrap.min.js' },
-    css: { bootstrap: '/style.css' },
-    mob: { mobile: '/mobile.css' },
-    desk: { desktop: '/desktop.css' },
-    img: { 'the-girl': '//cdn/img/the-girl.jpg' }
+    man: { manifest: '/manifest.json'},
+    pre: { font: 'https://fonts.googleapis.com/css?family=Raleway'},
+    css: { critical: '/style.css' },
+    css: { hamburger: '/styles/hamburger.css' },
+    mob: { mobile: '/styles/mobile.css' },
+    desk: { desktop: '/styles/desktop.css' },
+    img: { favicon: appConfig.favicon }
 }
 
 const tpl = {
-    img: '<img src="%s">',
+    img: '<link rel="shortcut icon" href="%s">',
+    pre: '<link href="%s" rel="preload" as="font">',
+    man: '<link rel="manifest" href="%s">',
     css: '<link rel="stylesheet" type="text/css" href="%s" inline>',
     mob: '<link rel="stylesheet" type="text/css" href="%s" media="screen and (max-width: 900px)">',
     desk: '<link rel="stylesheet" type="text/css" href="%s" media="screen and (min-width: 900px)">',
@@ -31,7 +36,7 @@ const tpl = {
 const config = {
 
     // Entry
-    entry:{ app: ['./src/js/index.js', './src/styles/main.scss'],
+    entry:{ app: ['./src/js/index.js', './src/styles/above-fold-inline.scss'],
     },
     // Output
     mode: "production",
@@ -64,7 +69,7 @@ const config = {
     // Plugins
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "style.css"
+            filename: "critical.css"
             // filename: "[name].css",
             // chunkFilename: "[id].css"
         }),
@@ -80,12 +85,18 @@ const config = {
         new htmlWebpackPlugin({
             'meta': {
                 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+                'msapplication-TileImage': appConfig.msTileImage,
+                'msapplication-TileColor': appConfig.msTileColor,
                 'description': appConfig.description,
                 // Will generate: <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 'theme-color': '#4285f4'
                 // Will generate: <meta name="theme-color" content="#4285f4">
             },
             title: appConfig.appName,
+            icon: appConfig.icon,
+            icon72: appConfig.icon72,
+            icon114: appConfig.icon114,
+            icon144: appConfig.icon144,
             myPageHeader: 'Hello World',
             template: './src/index.html',
             filename: 'index.html',
@@ -98,16 +109,16 @@ const config = {
                 pattern: 'foo',
                 replacement: '`foo` has been replaced with `bar`'
             },
-            {
-                pattern: '@@title',
-                replacement: 'html replace webpack plugin'
-            },
+            // {
+            //     pattern: '@@title',
+            //     replacement: 'html replace webpack plugin'
+            // },
             {
                 pattern: '@@lang',
                 replacement: appConfig.language
             },
             {
-                pattern: /(<!--\s*|@@)(css|js|img|mob|desk):([\w-\/]+)(\s*-->)?/g,
+                pattern: /(<!--\s*|@@)(css|js|img|mob|desk|man|pre):([\w-\/]+)(\s*-->)?/g,
                 replacement: function(match, $1, type, file, $4, index, input) {
                     // those formal parameters could be:
                     // match: <-- css:bootstrap-->

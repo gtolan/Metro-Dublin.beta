@@ -1,0 +1,55 @@
+<!DOCTYPE html lang="@@lang">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- man:manifest -->
+    <!-- img:favicon -->
+    <link rel="stylesheet" type="text/css" href="critical.css" inline>
+    <!-- css:hamburger -->
+
+    <link rel="icon" type="image/png" href="/images/icons/MDlogFavIco.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= htmlWebpackPlugin.options.icon144 %><"><!-- iPad Retina-->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= htmlWebpackPlugin.options.icon114 %><"><!--iPhone Retina -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= htmlWebpackPlugin.options.icon72 %><"><!-- iPad 1 e 2 -->
+    <link rel="apple-touch-icon-precomposed" href="<%= htmlWebpackPlugin.options.icon %><"><!-- iPhone, iPod e Android 2.2+ -->
+
+    <noscript id="deferred-styles">
+        <!-- mob:mobile -->
+        <!-- desk:desktop -->
+    </noscript>
+
+    <script>
+        var loadDeferredStyles = function () {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function () {
+            window.setTimeout(loadDeferredStyles, 0);
+        });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
+
+    <!-- pre:font -->
+
+
+    <script defer src="/__/firebase/5.7.0/firebase-app.js"></script>
+    <script defer src="/__/firebase/5.7.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.7.0/firebase-database.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132390266-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-132390266-1');
+    </script>
+
+</head>
