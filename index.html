@@ -5,8 +5,32 @@
     <title>html replace webpack plugin</title>
     <title>appName</title>
     <link rel="manifest" href="/manifest.json">
-    <style type="text/css">.autoprefixer-test{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:red}</style>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content="App description"><meta name="theme-color" content="#4285f4"><link href="style.css" rel="stylesheet"></head>
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/mobile.css" media="screen and (max-width: 900px)">
+        <link rel="stylesheet" type="text/css" href="/desktop.css" media="screen and (min-width: 900px)">
+
+    </noscript>
+    <script>
+        var loadDeferredStyles = function () {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function () {
+            window.setTimeout(loadDeferredStyles, 0);
+        });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <link rel="stylesheet" type="text/css" href="/style.css" inline>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="App description">
+    <meta name="theme-color" content="#4285f4">
+    <link href="style.css" rel="stylesheet">
+</head>
 <body>
 <main>
     <div><h1>Hey</h1></div>
@@ -16,6 +40,7 @@
 <div>
     <h4> with a green background </h4>
 </div>
- <!--js//-:somejs -->
-<script type="text/javascript" src="app.bundle.js"></script></body>
+<!--js//-:somejs -->
+<script type="text/javascript" src="app.bundle.js"></script>
+</body>
 </html>
