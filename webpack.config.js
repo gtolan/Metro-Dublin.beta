@@ -7,6 +7,7 @@ const appConfig =  require('./app.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const MediaQueryPlugin = require('media-query-plugin');
 
+
 // const lazyloadCSS = new ExtractTextPlugin('./src/styles/above-fold-inline.scss');
 
 
@@ -68,6 +69,7 @@ const config = {
     },
     // Plugins
     plugins: [
+
         new MiniCssExtractPlugin({
             filename: "critical.css"
             // filename: "[name].css",
