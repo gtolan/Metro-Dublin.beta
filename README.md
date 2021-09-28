@@ -1,9 +1,10 @@
 # Webpack-Gulp-dev-env-start
-Es6 PWA base project for all 100 scores on lighthouse
-Built With
+Es6 PWA base project for all 100 scores on lighthouse 2018
 
 Git Pages:
 https://gtolan.github.io/Metro-Dublin.beta/
+
+Built With:
 
 Webpack
 *  - generate index.html
