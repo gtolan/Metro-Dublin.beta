@@ -14,12 +14,12 @@ const MediaQueryPlugin = require('media-query-plugin');
 // file types & file links
 const resource = {
     // js: { somejs: '//cdn/bootstrap/bootstrap.min.js' },
-    man: { manifest: '/manifest.json'},
+    man: { manifest: './manifest.json'},
     pre: { font: 'https://fonts.googleapis.com/css?family=Raleway'},
-    css: { critical: '/styles/above-fold-inline.css' },
-    css: { hamburger: '/styles/hamburger.css' },
-    mob: { mobile: '/styles/mobile.css' },
-    desk: { desktop: '/styles/desktop.css' },
+    css: { critical: './styles/above-fold-inline.css' },
+    css: { hamburger: './styles/hamburger.css' },
+    mob: { mobile: './styles/mobile.css' },
+    desk: { desktop: './styles/desktop.css' },
     img: { favicon: appConfig.favicon }
 }
 

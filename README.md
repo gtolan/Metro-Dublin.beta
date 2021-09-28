@@ -2,6 +2,9 @@
 Es6 PWA base project for all 100 scores on lighthouse
 Built With
 
+Git Pages:
+https://gtolan.github.io/Metro-Dublin.beta/
+
 Webpack
 *  - generate index.html
 *  - add meta tags and viewport
@@ -11,6 +14,7 @@ Webpack
 *  - autoprefix styles
 *  - replace / add styles and scripts to index
 *  - Add defered styles by Media Query
+*  - html templates
 
 ...with the help of
 
